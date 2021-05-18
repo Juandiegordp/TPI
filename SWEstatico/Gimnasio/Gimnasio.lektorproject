@@ -1,2 +1,4 @@
 [project]
 name = Gimnasio
+[servers.ghpages]
+target = ghpages+https://Juandiegordp/juandiegordp.github.io
