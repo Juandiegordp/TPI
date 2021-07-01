@@ -4,15 +4,18 @@
 ## Descripción del proyecto
 
 Una aplicación donde existan dos tipos de usuarios (cliente, entrenador) en la cual el cliente podrá armar su propia rutina o recibir rutinas de parte del entrador. Para el armado de rutinas se permitirá una múltiple selección de ejercicios con distintas modalidades y aclarar los tiempos de descanso. El cliente tendrá la posibilidad de cargar sus pesos para cada serie, junto con las repeticiones.
+
 Posibilidades a la hora de armar la rutina:
-• Una combinación de ejercicios con las series y repeticiones establecidas:
-Ej: Biserie -> 4 series de Press de banca 8 repeticiones + Curl de biseps 12 repeticiones
-Igual a las biseries podrían asignarse triseries o circuitos.
+
+- Una combinación de ejercicios con las series y repeticiones establecidas.
+
+Ej: Biserie -> 4 series de Press de banca 8 repeticiones + Curl de biseps 12 repeticiones. Igual a las biseries podrían asignarse triseries o circuitos.
+
 Con esto se permitiría al cliente tener un registro de sus progresos, facilitar las anotaciones en el gimnasio (actualmente la mayoría usa una hoja, o no anota).
 
 ## Modelo de Dominio
 
-Insertar el modelo de dominio aquí.
+![alt text](https://github.com/Juandiegordp/TPI/blob/main/MapaCanonico.jpg)
 
 ## Bosquejo de Arquitectura
 
@@ -20,11 +23,14 @@ Definir la arquitectura del sistema y como interactuan sus diferentes componente
 
 ## Requerimientos
 
-Definir los requerimientos del sistema.
 
 ### Funcionales
 
-Listado y descripción breve de los requerimientos funcionales.
+- Gestionar rutinas de entrenamiento.
+- Gestionar clientes.
+- Generar estadísticas de progreso del entrenamiento de los clientes.
+- Gestionar personal del gimnasio.
+
 
 ### No Funcionales
 
