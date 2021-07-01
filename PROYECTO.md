@@ -1,12 +1,14 @@
-# NOMBRE_DEL_PROYECTO
+# Sistema de gimnasio
 
-Este es un archivo que debe completarse con los datos utilizados en el TPI. Este archivo puede modificarse en el tiempo, no obstante siempre debe mantenerse en un estado consistente con el desarrollo.
-
-**Importante:** Este archivo debe mantenerse en formato Markdown (.md) y sólo se tendrá en cuenta la versión disponible en GIT.
 
 ## Descripción del proyecto
 
-Definir cúal es el alcance de este proyecto y los principales objetivos que debe cumplir.
+Una aplicación donde existan dos tipos de usuarios (cliente, entrenador) en la cual el cliente podrá armar su propia rutina o recibir rutinas de parte del entrador. Para el armado de rutinas se permitirá una múltiple selección de ejercicios con distintas modalidades y aclarar los tiempos de descanso. El cliente tendrá la posibilidad de cargar sus pesos para cada serie, junto con las repeticiones.
+Posibilidades a la hora de armar la rutina:
+• Una combinación de ejercicios con las series y repeticiones establecidas:
+Ej: Biserie -> 4 series de Press de banca 8 repeticiones + Curl de biseps 12 repeticiones
+Igual a las biseries podrían asignarse triseries o circuitos.
+Con esto se permitiría al cliente tener un registro de sus progresos, facilitar las anotaciones en el gimnasio (actualmente la mayoría usa una hoja, o no anota).
 
 ## Modelo de Dominio
 
