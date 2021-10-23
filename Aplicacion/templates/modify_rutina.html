@@ -11,7 +11,7 @@
   {% endfor %}
 
   <div class="container">
-    <div class="row">
+
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Seleccione una rutina
@@ -23,7 +23,7 @@
         </div>
         <input id="nombre-rut" disabled placeholder="Seleccione una rutina">
       </div>
-    </div>
+
 
     <div class="container">
 
@@ -151,11 +151,12 @@
       for (let i = 0; i < rutinas.length; i++) {
         if (rut = rutinas[i][0]){
           nombreRut.value= rutinas[i][1];
-          break;
         }
       }
+      console.log(rut)
       rutinasEjer.forEach(ej => {
         if (ej[0]==rut){
+          console.log("ej[0] "+ ej[0] + "rut "+ rut)
           console.log("rutinaEjer seleccionada " + ej);
           var table = document.getElementById("id-tabla");
           var rowCount = table.rows.length;
