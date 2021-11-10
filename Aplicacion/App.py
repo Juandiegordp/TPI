@@ -40,7 +40,7 @@ def logout():
 @app.route('/register', methods = ['GET', 'POST'])
 def Register():
     registerForm= forms.RegisterForm(request.form)
-    datos=[];
+    datos=[]
     if request.method == 'POST' and registerForm.validate():
         datos.append(request.form['usuario'])
         datos.append(request.form['nombre'])
@@ -89,16 +89,36 @@ def register_add():
 @app.route('/home', methods=['POST', 'GET'])
 def home():
     if request.method== 'POST':
-        usuario= request.form['usuario']
-        contrasenia= request.form['contrasenia']
-        cur= mysql.connection.cursor()
-        cur.execute('SELECT u.id_usuario FROM usuario u WHERE (u.usuario= %s or u.mail=%s) AND u.contra=%s', (usuario, usuario, contrasenia))
-        datosUsuario= cur.fetchall()
-        if (len(datosUsuario)!=0):
-            session['username']= datosUsuario[0][0]
-        else:    
-            flash("Alguno de los datos es incorrecto")
-            return redirect(url_for('Index', success=False))
+        if request.form['boton']=="Iniciar Sesion":
+            usuario= request.form['usuario']
+            contrasenia= request.form['contrasenia']
+            cur= mysql.connection.cursor()
+            cur.execute('SELECT u.id_usuario FROM usuario u WHERE (u.usuario= %s or u.mail=%s) AND u.contra=%s', (usuario, usuario, contrasenia))
+            datosUsuario= cur.fetchall()
+            if (len(datosUsuario)!=0):
+                session['username']= datosUsuario[0][0]
+            else:    
+                flash("Alguno de los datos es incorrecto")
+                return redirect(url_for('Index', success=False))
+        if request.form['boton']=="Terminar Rutina":
+            rutina=request.form.get('rutina')
+            ejercicio=request.form.getlist('ejercicio')
+            pesos=request.form.getlist('pesos')
+            repeticiones=request.form.getlist('repeticiones')
+            descansos=request.form.getlist('descansos')
+            cur= mysql.connection.cursor()
+            cur.execute('SELECT id_rutina FROM rutina WHERE nombre="{0}"'.format(rutina))
+            idrutina=cur.fetchall()
+            print(idrutina)
+            i=0
+            for ej in ejercicio:
+                for j in range(0, len(pesos)):
+                    cur= mysql.connection.cursor()
+                    cur.execute('INSERT into historial_rutina(id_rutina, id_ejerc, fecha_realizacion, peso, repeticiones, descanso) VALUES (%s, %s , CURDATE(), %s, %s, %s)', [idrutina, ej, pesos[j], repeticiones[j], descansos[j]])
+                i=i+1
+            mysql.connection.commit()
+            flash("Termino la rutina")
+            return redirect(url_for('home'))
 
     if 'username' in session and request.method== 'GET':
         id=session['username']
@@ -152,7 +172,6 @@ def adm_rutinas():
         cur= mysql.connection.cursor()
         cur.execute('SELECT r.nombre FROM rutina r JOIN usuario_rutina ur ON r.id_rutina=ur.id_rutina JOIN usuario u ON u.id_usuario=ur.id_usuario WHERE u.usuario = "{0}"'.format(session['username']))
         rutinas= cur.fetchall()
-        #print(rutinas)
         cur= mysql.connection.cursor()
         return render_template('administracion_rutinas.html')
     else:
