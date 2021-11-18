@@ -84,7 +84,7 @@ CREATE TABLE `historial_rutina` (
   PRIMARY KEY (`id_historial`,`id_rutina`),
   KEY `gistorial_rutina_rutina_idx` (`id_rutina`),
   CONSTRAINT `gistorial_rutina_rutina` FOREIGN KEY (`id_rutina`) REFERENCES `rutina` (`id_rutina`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,8 +93,38 @@ CREATE TABLE `historial_rutina` (
 
 LOCK TABLES `historial_rutina` WRITE;
 /*!40000 ALTER TABLE `historial_rutina` DISABLE KEYS */;
-INSERT INTO `historial_rutina` VALUES (27,1,1,'2021-11-10',20,12,90),(28,1,1,'2021-11-10',20,12,90),(29,1,1,'2021-11-10',15,14,90),(30,1,2,'2021-11-10',10,15,90),(31,1,2,'2021-11-10',10,15,90),(32,1,3,'2021-11-10',20,10,90),(33,1,3,'2021-11-10',25,12,90),(34,1,3,'2021-11-10',30,13,90),(35,1,5,'2021-11-10',20,12,150),(36,1,5,'2021-11-10',20,12,120),(37,1,5,'2021-11-10',20,10,120),(38,1,6,'2021-11-10',10,15,90),(39,1,6,'2021-11-10',10,15,90),(40,1,7,'2021-11-10',8,12,90),(41,1,7,'2021-11-10',10,12,90),(42,1,7,'2021-11-10',12,12,90),(43,1,8,'2021-11-10',15,10,90),(44,1,8,'2021-11-10',15,10,90),(45,1,8,'2021-11-10',15,10,90);
+INSERT INTO `historial_rutina` VALUES (27,1,1,'2021-11-10',20,12,90),(28,1,1,'2021-11-10',20,12,90),(29,1,1,'2021-11-10',15,14,90),(30,1,2,'2021-11-10',10,15,90),(31,1,2,'2021-11-10',10,15,90),(32,1,3,'2021-11-10',20,10,90),(33,1,3,'2021-11-10',25,12,90),(34,1,3,'2021-11-10',30,13,90),(35,1,5,'2021-11-10',20,12,150),(36,1,5,'2021-11-10',20,12,120),(37,1,5,'2021-11-10',20,10,120),(38,1,6,'2021-11-10',10,15,90),(39,1,6,'2021-11-10',10,15,90),(40,1,7,'2021-11-10',8,12,90),(41,1,7,'2021-11-10',10,12,90),(42,1,7,'2021-11-10',12,12,90),(43,1,8,'2021-11-10',15,10,90),(44,1,8,'2021-11-10',15,10,90),(45,1,8,'2021-11-10',15,10,90),(46,2,5,'2021-11-10',20,12,60),(47,2,5,'2021-11-10',20,12,120),(48,2,5,'2021-11-10',25,12,120),(49,2,7,'2021-11-10',15,10,120),(50,2,7,'2021-11-10',15,10,120),(51,2,7,'2021-11-10',15,10,120),(52,2,8,'2021-11-10',15,10,120),(53,2,8,'2021-11-10',15,10,120),(54,2,8,'2021-11-10',15,10,120),(55,2,9,'2021-11-10',20,15,90),(56,2,9,'2021-11-10',20,15,90),(57,2,9,'2021-11-10',20,15,90),(58,2,10,'2021-11-10',15,12,120),(59,2,10,'2021-11-10',15,12,120),(60,2,10,'2021-11-10',15,12,120),(61,2,11,'2021-11-10',15,20,90),(62,2,11,'2021-11-10',15,20,90),(63,2,12,'2021-11-10',25,20,60),(64,2,12,'2021-11-10',25,20,60),(65,2,12,'2021-11-10',25,20,60),(66,2,13,'2021-11-10',15,12,120),(67,2,13,'2021-11-10',15,12,120),(68,2,13,'2021-11-10',15,12,120);
 /*!40000 ALTER TABLE `historial_rutina` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `historial_usuario`
+--
+
+DROP TABLE IF EXISTS `historial_usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `historial_usuario` (
+  `id_historial_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
+  `imc` int(11) DEFAULT '0',
+  `metabolismo_basal` int(11) DEFAULT '0',
+  `porcentaje_grasa` int(11) DEFAULT '0',
+  `fecha_historial` date DEFAULT NULL,
+  PRIMARY KEY (`id_historial_usuario`,`id_usuario`),
+  KEY `historia_usuario_usuario_fk_idx` (`id_usuario`),
+  CONSTRAINT `historial_usuario_usuario_fk` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `historial_usuario`
+--
+
+LOCK TABLES `historial_usuario` WRITE;
+/*!40000 ALTER TABLE `historial_usuario` DISABLE KEYS */;
+INSERT INTO `historial_usuario` VALUES (1,14,27,1968,-13,'2021-11-18'),(2,14,26,1911,-14,'2021-11-18');
+/*!40000 ALTER TABLE `historial_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -133,7 +163,7 @@ CREATE TABLE `rutina` (
   `nombre` varchar(45) DEFAULT NULL,
   `estado` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id_rutina`,`fecha`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +233,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id_usuario`),
   UNIQUE KEY `usuario_UNIQUE` (`usuario`),
   UNIQUE KEY `mail_UNIQUE` (`mail`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +242,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (14,'Danwife','Daniel','Medina','danielmedina012@gmail.com','Alexander1','Masculino','2021-11-04',178,80,80,60,75);
+INSERT INTO `usuario` VALUES (14,'Danwife','Daniel','Medina','danielmedina012@gmail.com','Alexander1','Masculino','2021-11-04',177,80,80,61,75),(15,'Juan','Juan','Ruiz','juan012@gmail.com','123','Masculino','1999-07-15',180,80,80,40,75);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,4 +283,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-10 17:07:28
+-- Dump completed on 2021-11-18 17:34:55
