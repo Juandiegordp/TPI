@@ -1,6 +1,6 @@
 from wtforms import Form, validators, PasswordField, BooleanField, FloatField, IntegerField, RadioField, DateField
 from wtforms import StringField
-from wtforms.fields.html5 import EmailField
+
 
 class RegisterForm(Form):
     usuario= StringField('Usuario', [validators.Length(min=4, max=25, message="El usuario que tener entre 4 a 25 caracteres")])
@@ -13,7 +13,6 @@ class RegisterForm(Form):
     cintura= FloatField('Cintura en cm (opcional)', [validators.required()])
     cuello= FloatField('Cuello en cm (opcional)', [validators.required()])
     caderas= FloatField('Caderas en cm (opcional)')
-    mail= EmailField('Mail', [validators.Length(min=6, max=35, message="El mail tiene que tener entre 6 a 35 caracteres")])
     contrasenia= PasswordField('Contraseña', [validators.DataRequired(), validators.EqualTo('confirmarContra', message='No coinciden las contraseñas')])
     confirmarContra= PasswordField('Repetir Contraseña')
     terminos = BooleanField('Acepto los terminos y condiciones', [validators.DataRequired(message="Acepte los terminos y condiciones")])
