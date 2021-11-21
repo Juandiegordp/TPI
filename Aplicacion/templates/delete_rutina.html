@@ -74,10 +74,9 @@
 </div>
     <script>
         function seleccionar(elemento){
-          document.getElementById("id-ejer").innerHTML = elemento.innerHTML;
+          document.getElementById("id-ejer").innerHTML = document.getElementById(elemento).innerHTML;
           document.getElementById("id-botonAdd").disabled=false;
         }
-    
         function validaNumericos(event){
           if(event.charCode >= 48 && event.charCode <= 57){
             return true;

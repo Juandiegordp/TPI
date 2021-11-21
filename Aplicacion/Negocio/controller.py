@@ -64,15 +64,15 @@ def iniciarSesion(mysql, request):
             flash("Alguno de los datos es incorrecto")
             return redirect(url_for('Index', success=False))
     if request.form['boton']=="Terminar Rutina":
-        rutina=request.form.get('rutina')
+        rutina=request.form['rutina']
         ejercicio=request.form.getlist('ejercicio')
         pesos=request.form.getlist('pesos')
         repeticiones=request.form.getlist('repeticiones')
         descansos=request.form.getlist('descansos')
         idrutina=db.seleccionarIdRutina(mysql, rutina)
-        print(idrutina)
         for j in range(0, len(pesos)):
-            db.registrarHistorial(mysql, idrutina, ejercicio[j], pesos[j], repeticiones[j], descansos[j])    
+            print("idrutina", idrutina[0][0], "ejercicio", ejercicio[j], "pesos", pesos[j], "repeticiones", repeticiones[j], "descansos", descansos[j])
+            db.registrarHistorial(mysql, idrutina[0][0], ejercicio[j], pesos[j], repeticiones[j], descansos[j])    
         flash("Termino la rutina")
         return redirect(url_for('home'))
 
@@ -187,6 +187,7 @@ def mostrar_historial_rutina(mysql, request):
     if rutina!=None:
         ejercicios=db.historialEjerciciosRutina(mysql, session['username'], rutina)
         rutina=db.seleccionarNombreRutina(mysql, rutina)
+        print(ejercicios)
         return render_template('historial_rutina.html', datosRutinas=datosRutinas, rutina=rutina, ejercicios=ejercicios)
     return render_template('historial_rutina.html', datosRutinas=datosRutinas, rutina=rutina)
 
